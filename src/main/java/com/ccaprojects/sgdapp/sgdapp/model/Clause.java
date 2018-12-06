@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Created by christianluque on 28/11/2018
@@ -135,5 +136,18 @@ public class Clause {
                 ", userUpdate='" + userUpdate + '\'' +
                 ", dateUpdate=" + dateUpdate +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Clause clause = (Clause) o;
+        return Objects.equals(idClause, clause.idClause);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idClause);
     }
 }

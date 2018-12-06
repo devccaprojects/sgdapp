@@ -1,6 +1,7 @@
 package com.ccaprojects.sgdapp.sgdapp.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * Created by christianluque on 28/11/2018
@@ -15,6 +16,7 @@ public class DetailsContract {
     private String field;
 
     @ManyToOne
+    @JoinColumn(name = "id_contract")
     private Contract contract;
 
     public DetailsContract() {
@@ -66,5 +68,18 @@ public class DetailsContract {
                 ", field='" + field + '\'' +
                 ", contract=" + contract +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DetailsContract that = (DetailsContract) o;
+        return Objects.equals(idDetailsContract, that.idDetailsContract);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idDetailsContract);
     }
 }
